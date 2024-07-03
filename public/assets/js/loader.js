@@ -1,4 +1,4 @@
-const lista = document.getElementById("lista-produtos")
+const lista = document.getElementById("lista-premios")
 for(let i = 1; i < 11; i++){
     const item = document.createElement("li")
     item.classList.add("col-xl-3", "col-lg-4" ,"col-md-6")

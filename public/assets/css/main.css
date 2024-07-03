@@ -1385,10 +1385,14 @@ section,
   background-color: color-mix(in srgb, var(--accent-color) 90%, white 10%);
 }
 
-#lista-produtos .gallery-item {
+#lista-premios .gallery-item {
   text-align: center;
 }
 
-#lista-produtos .gallery-item img {
+#lista-premios .gallery-item img {
   max-width: 100%;
+}
+
+#lista-premios{
+  list-style: none;
 }
