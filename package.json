@@ -26,6 +26,7 @@
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
+    "aos": "^2.3.4",
     "autoprefixer": "^10.4.19",
     "bootstrap": "^5.3.3",
     "express": "^4.19.2",
