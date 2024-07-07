@@ -1,22 +1,20 @@
 import React from 'react';
-import Header from '../components/Header';
-import MainContent from '../components/MainContent';
-import Footer from '../components/Footer';
-import DefaultHead from '../components/DefaultHead';
-import Extra from '../components/Extra';
-import JsFiles from '../components/JsFiles';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import LoginPage from './login/LoginPage';
+import HomePage from './home/HomePage';
+import ClientOnly from './ClientOnly';
 
-const HomePage: React.FC = () => {
+const App: React.FC = () => {
   return (
-    <>
-      <DefaultHead />
-      <Header />
-      <MainContent />
-      <Footer />
-      <Extra />
-      <JsFiles />
-    </>
+    <ClientOnly>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/login' element={<LoginPage />} />
+        </Routes>
+      </BrowserRouter>
+    </ClientOnly>
   );
 };
 
-export default HomePage;
+export default App;
