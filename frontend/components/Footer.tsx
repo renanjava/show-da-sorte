@@ -1,11 +1,12 @@
 import React from 'react';
+import { SITE_NAME } from '../../src/constants/constants';
 
 const Footer: React.FC = () => {
   return (
     <footer id="footer" className="footer">
       <div className="container">
         <div className="copyright text-center ">
-          <p>© <span>Copyright</span> <strong className="px-1 sitename">Rifas Charamba</strong> <span>All Rights Reserved</span></p>
+          <p>© <span>Copyright</span> <strong className="px-1 sitename">{SITE_NAME}</strong> <span>All Rights Reserved</span></p>
         </div>
         <div className="social-links d-flex justify-content-center">
           <a href=""><i className="bi bi-twitter-x"></i></a>

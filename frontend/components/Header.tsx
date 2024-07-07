@@ -5,6 +5,7 @@ import '../public/assets/vendor/bootstrap-icons/bootstrap-icons.css';
 import '../public/assets/vendor/aos/aos.css';
 import '../public/assets/vendor/glightbox/css/glightbox.min.css';
 import '../public/assets/vendor/swiper/swiper-bundle.min.css';
+import { SITE_NAME } from '../../src/constants/constants';
 
 const Header: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ const Header: React.FC = () => {
       <div className="container-fluid position-relative d-flex align-items-center justify-content-between">
         <a href="/" className="logo d-flex align-items-center me-auto me-xl-0">
           <i className="bi bi-camera"></i>
-          <h1 className="sitename">Rifas Charamba</h1>
+          <h1 className="sitename">{SITE_NAME}</h1>
         </a>
         <nav id="navmenu" className="navmenu">
           <ul>

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import GalleryList from './GalleryList';
+import { SITE_NAME } from '../../src/constants/constants';
 
 const MainContent: React.FC = () => {
   useEffect(() => {
@@ -14,7 +15,7 @@ const MainContent: React.FC = () => {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-6 text-center" data-aos="fade-up" data-aos-delay="100">
-              <h2><span>Este é o </span><span className="underlight">Rifas Charamba</span> um site<span> onde moradores de Itambé pode concorrer a prêmios com números da sorte.</span></h2>
+              <h2><span>Este é o </span><span className="underlight">{SITE_NAME}</span> um site<span> onde moradores de Itambé pode concorrer a prêmios com números da sorte.</span></h2>
               <p>Confira abaixo nossos prêmios disponíveis!</p>
               <a href="#lista-premios" className="btn-get-started">Prêmios</a>
             </div>
