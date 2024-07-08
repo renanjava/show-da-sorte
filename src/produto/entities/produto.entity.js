@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Usuario = void 0;
-class Usuario {
+exports.Produto = void 0;
+class Produto {
 }
-exports.Usuario = Usuario;
+exports.Produto = Produto;
