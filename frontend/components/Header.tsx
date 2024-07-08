@@ -30,7 +30,7 @@ const Header: React.FC = () => {
               </ul>
             </li>
             <li><a href="/contato.html">Contato</a></li>
-            <li><Link href="/login" legacyBehavior><a>Login</a></Link></li>
+            <li><a href="/acesso/login">Login</a></li>
           </ul>
           <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>

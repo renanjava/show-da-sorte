@@ -7,6 +7,7 @@ import Extra from '../../components/Extra';
 import JsFiles from '../../components/main-page/JsFiles';
 
 const HomePage: React.FC = () => {
+
   return (
     <>
       <DefaultHead />

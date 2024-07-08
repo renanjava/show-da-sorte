@@ -1,20 +1,19 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { SITE_NAME } from '../../../src/constants/constants';
-import './LoginPage.css';
+import { SITE_NAME } from '../../../../src/constants/constants';
+import '../acesso.css';
 
-const LoginPage: React.FC = () => {
+const RegisterPage: React.FC = () => {
   return (
     <>
       <Head>
         <meta charSet="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossOrigin="anonymous"/>
         <title>{SITE_NAME}</title>
       </Head>
       <div className="login">
-        <img src="assets/img/login-bg.png" alt="image" className="login__bg"/>
+        <img src="" alt="image" className="login__bg"/>
         <form action="" className="login__form">
           <h1 className="login__title">Login</h1>
           <div className="login__inputs">
@@ -44,4 +43,4 @@ const LoginPage: React.FC = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

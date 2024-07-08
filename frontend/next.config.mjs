@@ -1,3 +1,4 @@
+// next.config.js
 import path from 'path';
 
 export default {
@@ -28,4 +29,5 @@ export default {
       },
     ];
   },
+  reactStrictMode: true,
 };
