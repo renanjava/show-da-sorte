@@ -3,6 +3,7 @@ import { SITE_NAME } from '../../src/constants/constants';
 
 const Footer: React.FC = () => {
   return (
+    <>
     <footer id="footer" className="footer">
       <div className="container">
         <div className="copyright text-center ">
@@ -19,6 +20,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
     </footer>
+    </>
   );
 }
 

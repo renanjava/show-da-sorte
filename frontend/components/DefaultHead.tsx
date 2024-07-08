@@ -4,6 +4,7 @@ import { SITE_NAME } from '../../src/constants/constants';
 
 const DefaultHead: React.FC = () => {
   return (
+    <>
     <Head>
       <meta charSet="utf-8" />
       <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -26,6 +27,7 @@ const DefaultHead: React.FC = () => {
 
       <link href="/assets/css/main.css" rel="stylesheet" />
     </Head>
+    </>
   );
 }
 

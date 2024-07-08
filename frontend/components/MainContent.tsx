@@ -5,11 +5,8 @@ import GalleryList from './GalleryList';
 import { SITE_NAME } from '../../src/constants/constants';
 
 const MainContent: React.FC = () => {
-  useEffect(() => {
-    AOS.init({ duration: 1000 });
-  }, []);
-
   return (
+    <>
     <main className="main">
       <section id="hero" className="hero section">
         <div className="container">
@@ -32,6 +29,7 @@ const MainContent: React.FC = () => {
         </div>
       </section>
     </main>
+    </>
   );
 }
 

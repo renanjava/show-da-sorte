@@ -6,16 +6,19 @@ import '../public/assets/vendor/aos/aos.css';
 import '../public/assets/vendor/glightbox/css/glightbox.min.css';
 import '../public/assets/vendor/swiper/swiper-bundle.min.css';
 import { SITE_NAME } from '../../src/constants/constants';
+import Link from 'next/link';
 
 const Header: React.FC = () => {
   return (
     <>
     <header id="header" className="header d-flex align-items-center sticky-top">
       <div className="container-fluid position-relative d-flex align-items-center justify-content-between">
-        <a href="/" className="logo d-flex align-items-center me-auto me-xl-0">
-          <i className="bi bi-camera"></i>
-          <h1 className="sitename">{SITE_NAME}</h1>
-        </a>
+        <Link href="/" legacyBehavior>
+          <a className="logo d-flex align-items-center me-auto me-xl-0">
+            <i className="bi bi-camera"></i>
+            <h1 className="sitename">{SITE_NAME}</h1>
+          </a>
+        </Link>
         <nav id="navmenu" className="navmenu">
           <ul>
             <li><a href="/" className="active">Início<br /></a></li>
@@ -27,7 +30,7 @@ const Header: React.FC = () => {
               </ul>
             </li>
             <li><a href="/contato.html">Contato</a></li>
-            <li><a href="/login.html">Login</a></li>
+            <li><Link href="/login" legacyBehavior><a>Login</a></Link></li>
           </ul>
           <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
