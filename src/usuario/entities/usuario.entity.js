@@ -4,4 +4,3 @@ exports.Usuario = void 0;
 class Usuario {
 }
 exports.Usuario = Usuario;
-//# sourceMappingURL=usuario.entity.js.map

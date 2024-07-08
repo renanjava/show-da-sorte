@@ -5,7 +5,7 @@
     "jsx": "react",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "baseUrl": "./",
     "incremental": true,
     "removeComments": true,
