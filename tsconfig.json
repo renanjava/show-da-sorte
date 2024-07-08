@@ -10,7 +10,9 @@
     "incremental": true,
     "removeComments": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "exclude": ["node_modules", "dist"],
   "include": ["src/**/*", "express.js", "express.js"]
