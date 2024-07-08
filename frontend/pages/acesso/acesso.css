@@ -40,15 +40,15 @@ img {
   height: auto;
 }
 
-/*=============== LOGIN ===============*/
-.login {
+/*=============== ACESS ===============*/
+.acess {
   position: relative;
   height: 100vh;
   display: grid;
   align-items: center;
 }
 
-.login__bg {
+.acess__bg {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -56,7 +56,7 @@ img {
   object-position: center;
 }
 
-.login__form {
+.acess__form {
   position: relative;
   margin-inline: 1.5rem;
   background-color: hsla(0, 0%, 100%, .01);
@@ -67,23 +67,23 @@ img {
   backdrop-filter: blur(16px);
 }
 
-.login__title {
+.acess__title {
   text-align: center;
   font-size: var(--h1-font-size);
   margin-bottom: 1.25rem;
 }
 
-.login__inputs, 
-.login__box {
+.acess__inputs, 
+.acess__box {
   display: grid;
 }
 
-.login__inputs {
+.acess__inputs {
   row-gap: 1.25rem;
   margin-bottom: 1rem;
 }
 
-.login__box {
+.acess__box {
   grid-template-columns: 1fr max-content;
   column-gap: .75rem;
   align-items: center;
@@ -92,58 +92,58 @@ img {
   border-radius: 4rem;
 }
 
-.login__input, 
-.login__button {
+.acess__input, 
+.acess__button {
   border: none;
   outline: none;
 }
 
-.login__input {
+.acess__input {
   width: 100%;
   background: none;
   color: var(--white-color);
   padding-block: 1rem;
 }
 
-.login__input::placeholder {
+.acess__input::placeholder {
   color: var(--white-color);
 }
 
-.login__box i {
+.acess__box i {
   font-size: 1.25rem;
 }
 
-.login__check, 
-.login__check-box {
+.acess__check, 
+.acess__check-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.login__check {
+.acess__check {
   margin-bottom: 1rem;
   font-size: var(--small-font-size);
 }
 
-.login__check-box {
+.acess__check-box {
   column-gap: .5rem;
 }
 
-.login__check-input {
+.acess__check-input {
   width: 1rem;
   height: 1rem;
   accent-color: var(--white-color);
 }
 
-.login__forgot {
+.acess__forgot {
   color: var(--white-color);
 }
 
-.login__forgot:hover {
+.acess__forgot:hover {
   text-decoration: underline;
 }
 
-.login__button {
+.acess__button {
   width: 100%;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -154,31 +154,31 @@ img {
   cursor: pointer;
 }
 
-.login__register {
+.acess__register {
   font-size: var(--small-font-size);
   text-align: center;
 }
 
-.login__register a {
+.acess__register a {
   color: var(--white-color);
   font-weight: 500;
 }
 
-.login__register a:hover {
+.acess__register a:hover {
   text-decoration: underline;
 }
 
 /*=============== BREAKPOINTS ===============*/
 /* For medium devices */
 @media screen and (min-width: 576px) {
-  .login {
+  .acess {
     justify-content: center;
   }
-  .login__form {
+  .acess__form {
     width: 420px;
     padding-inline: 2.5rem;
   }
-  .login__title {
+  .acess__title {
     margin-bottom: 2rem;
   }
 }

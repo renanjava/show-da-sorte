@@ -1,4 +1,3 @@
-// next.config.js
 import path from 'path';
 
 export default {
