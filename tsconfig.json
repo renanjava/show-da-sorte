@@ -10,6 +10,7 @@
     "incremental": true,
     "removeComments": true,
     "strict": true,
+    "noImplicitAny": false,
     "forceConsistentCasingInFileNames": true,
     "strictPropertyInitialization": false,
     "experimentalDecorators": true,
