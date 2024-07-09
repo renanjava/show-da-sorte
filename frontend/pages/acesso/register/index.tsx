@@ -1,9 +1,40 @@
+import { useState } from 'react';
 import React from 'react';
 import Head from 'next/head';
 import { SITE_NAME } from '../../../../src/constants/constants';
 import '../acesso.css';
 
 const RegisterPage: React.FC = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    name: '',
+    phone: '',
+    password: '',
+    role: 'usuario'
+  })
+
+  const handleFormEdit = (event, name) => {
+    setFormData({...formData,[name]: event.target.value})
+  }
+
+  const handleForm = async (event) => {
+    try{
+      event.preventDefault()
+      const response = await fetch('http://localhost:4000/usuario', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });      
+      const json = await response.json()
+      console.log(response.status)
+      console.log(json)
+    }catch(error){
+      console.error('Erro ao registrar usuário: ', error);
+    }
+  }
+
   return (
     <>
       <Head>
@@ -13,23 +44,23 @@ const RegisterPage: React.FC = () => {
       </Head>
       <div className="acess">
         <img src="/assets/img/acess-bg.png" alt="image" className="acess__bg"/>
-        <form action="" className="acess__form">
+        <form onSubmit={handleForm} className="acess__form">
           <h1 className="acess__title">Registro</h1>
           <div className="acess__inputs">
             <div className="acess__box">
-              <input type="email" placeholder="Email" required className="acess__input"/>
+              <input type="email" placeholder="Email" required className="acess__input" value={formData.email} onChange={(e) => {handleFormEdit(e, 'email')}}/>
               <i className="ri-mail-fill"></i>
             </div>
             <div className="acess__box">
-              <input type="text" placeholder="Nome" required className="acess__input"/>
+              <input type="text" placeholder="Nome" required className="acess__input" value={formData.name} onChange={(e) => {handleFormEdit(e, 'name')}}/>
               <i className="ri-mail-fill"></i>
             </div>
             <div className="acess__box">
-              <input type="text" placeholder="Telefone" required className="acess__input"/>
+              <input type="text" placeholder="Telefone" required className="acess__input" value={formData.phone} onChange={(e) => {handleFormEdit(e, 'phone')}}/>
               <i className="ri-mail-fill"></i>
             </div>
             <div className="acess__box">
-              <input type="password" placeholder="Senha" required className="acess__input"/>
+              <input type="password" placeholder="Senha" required className="acess__input" value={formData.password} onChange={(e) => {handleFormEdit(e, 'password')}}/>
               <i className="ri-lock-2-fill"></i>
             </div>
           </div>

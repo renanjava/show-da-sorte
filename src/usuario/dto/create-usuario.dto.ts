@@ -19,7 +19,7 @@ export class CreateUsuarioDto{
     password: string;
 
     @IsNotEmpty({message: "O cargo é obrigatório"})
-    @IsEnum(["usuario", "admin"],{message: "O cargo deve ser válido"})
+    @IsEnum(["usuario", "admin", "dev"],{message: "O cargo deve ser válido"})
     role: string;
 
     @IsNotEmpty({message: "O número de telefone é obrigatório"})
