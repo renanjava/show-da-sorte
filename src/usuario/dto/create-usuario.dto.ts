@@ -2,27 +2,27 @@ import { IsEmail, IsEnum, IsNotEmpty, IsPhoneNumber, IsString, Matches, MaxLengt
 
 export class CreateUsuarioDto{
 
-    @IsNotEmpty({message: "O email é obrigatório"})
-    @IsEmail({}, {message: "O email deve ser válido"})
+    @IsNotEmpty({message: "Email é obrigatório"})
+    @IsEmail({}, {message: "Email deve ser válido"})
     @Matches(/@(hotmail|gmail)\.com$/, { message: 'Email deve ser hotmail.com ou gmail.com' })
     email: string;
 
-    @IsNotEmpty({message: "O nome é obrigatório"})
-    @MaxLength(60, {message: "O nome deve ter no máximo 60 caracteres"})
-    @MinLength(2, {message: "O nome deve ter no mínimo 2 caracteres"})
-    @IsString({message: "O nome não pode ter apenas números"})
+    @IsNotEmpty({message: "Nome é obrigatório"})
+    @MaxLength(60, {message: "Nome deve ter no máximo 60 caracteres"})
+    @MinLength(2, {message: "Nome deve ter no mínimo 2 caracteres"})
+    @IsString({message: "Nome não pode ter apenas números"})
     name: string;
 
-    @IsNotEmpty({message: "A senha é obrigatória"})
-    @MaxLength(20, {message: "A senha deve ter no máximo 20 caracteres"})
-    @MinLength(6, {message: "A senha deve ter no mínimo 6 caracteres"})
+    @IsNotEmpty({message: "Senha é obrigatória"})
+    @MaxLength(20, {message: "Senha deve ter no máximo 20 caracteres"})
+    @MinLength(6, {message: "Senha deve ter no mínimo 6 caracteres"})
     password: string;
 
-    @IsNotEmpty({message: "O cargo é obrigatório"})
-    @IsEnum(["usuario", "admin", "dev"],{message: "O cargo deve ser válido"})
+    @IsNotEmpty({message: "Cargo é obrigatório"})
+    @IsEnum(["usuario", "admin", "dev"],{message: "Cargo deve ser válido"})
     role: string;
 
-    @IsNotEmpty({message: "O número de telefone é obrigatório"})
-    @IsPhoneNumber(undefined, {message: "O número de telefone deve ser válido"})
+    @IsNotEmpty({message: "Número de telefone é obrigatório"})
+    @IsPhoneNumber(undefined, {message: "Número de telefone deve ser válido"})
     phone: string;
 }

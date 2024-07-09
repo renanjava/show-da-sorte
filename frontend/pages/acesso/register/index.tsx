@@ -3,19 +3,8 @@ import React from 'react';
 import Head from 'next/head';
 import { SITE_NAME } from '../../../../src/constants/constants';
 import '../acesso.css';
-import validateDto from '../../../../src/usuario/utilities/validate-dto'
-import { CreateUsuarioDto } from '../../../../src/usuario/dto/create-usuario.dto'
 
 const RegisterPage: React.FC = () => {
-
-  interface FormData {
-    email: string;
-    name: string;
-    phone: string;
-    password: string;
-    role: string;
-  }
-  
   interface FormErrors {
     email?: string;
     name?: string;
@@ -23,83 +12,106 @@ const RegisterPage: React.FC = () => {
     password?: string;
   }
 
-  const [formData, setFormData] = useState<FormData>
-  ({ 
-    email: '', 
-    name: '', 
-    phone: '', 
-    password: '', 
+  const [formData, setFormData] = useState({
+    email: '',
+    name: '',
+    phone: '',
+    password: '',
     role: 'usuario'
   });
 
-  const [errors, setErrors] = useState<FormErrors>
-  ({
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isEditing, setIsEditing] = useState<string | null>(null);
 
-  });
-
-  const handleFormEdit = async (event: React.ChangeEvent<HTMLInputElement>, field: keyof FormData) => {
-    const value = event.target.value;
-    const newFormData = { ...formData, [field]: value };
-    setFormData(newFormData);
-
-    const validationErrors = await validateDto(CreateUsuarioDto, newFormData);
-    setErrors(validationErrors);
+  const handleFormEdit = (event: React.ChangeEvent<HTMLInputElement>, name: keyof typeof formData) => {
+    setFormData({ ...formData, [name]: event.target.value });
+    setErrors({ ...errors, [name]: '' });
+    setIsEditing(name);
   };
 
-  const handleForm = async (event) => {
-    try{
-      event.preventDefault()
+  const handleForm = async (event: React.FormEvent<HTMLFormElement>) => {
+    try {
+      event.preventDefault();
+      setIsSubmitted(true);
+      setIsEditing(null);
+
       const response = await fetch('http://localhost:4000/usuario', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData)
-      });      
-      const json = await response.json()
-      console.log(response.status)
-      console.log(json.message)
-    }catch(error){
+      });
+
+      if (response.status === 400) {
+        const json = await response.json();
+        console.log(response.status);
+        console.log(json);
+        const { message } = json;
+        const fieldErrors: FormErrors = {};
+
+        if (Array.isArray(message)) {
+          message.forEach(msg => {
+            if (/\bemail\b/i.test(msg)) {
+              fieldErrors.email = msg;
+            } else if (/\bnome\b/i.test(msg)) {
+              fieldErrors.name = msg;
+            } else if (/\btelefone\b/i.test(msg)) {
+              fieldErrors.phone = msg;
+            } else if (/\bsenha\b/i.test(msg)) {
+              fieldErrors.password = msg;
+            }
+          });
+        }
+
+        setErrors(fieldErrors);
+        return;
+      }
+
+      const json = await response.json();
+      console.log(response.status);
+      console.log(json);
+    } catch (error) {
       console.error('Erro ao registrar usuário: ', error);
     }
-  }
+  };
 
   return (
     <>
       <Head>
-        <meta charSet="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{SITE_NAME}</title>
       </Head>
       <div className="acess">
-        <img src="/assets/img/acess-bg.png" alt="image" className="acess__bg"/>
+        <img src="/assets/img/acess-bg.png" alt="image" className="acess__bg" />
         <form onSubmit={handleForm} className="acess__form">
           <h1 className="acess__title">Registro</h1>
           <div className="acess__inputs">
-            <div className="acess__box">
-              <input type="email" placeholder="Email" required className="acess__input" value={formData.email} onChange={(e) => {handleFormEdit(e, 'email')}}/>
-              <i className="ri-mail-fill"></i>
-              {errors.email && <p className="error-message">{errors.email}</p>}
+            <div className={`acess__box ${isEditing === 'email' ? '' : isSubmitted && errors.email ? 'has-error' : isSubmitted && 'has-success'}`}>
+              <input type="text" placeholder="Email" className="acess__input" value={formData.email} onChange={(e) => handleFormEdit(e, 'email')} />
+              {isSubmitted && errors.email && <span className="error-message">{errors.email}</span>}
+              {isSubmitted && !errors.email && <span className="success-message">OK</span>}
             </div>
-            <div className="acess__box">
-              <input type="text" placeholder="Nome" required className="acess__input" value={formData.name} onChange={(e) => {handleFormEdit(e, 'name')}}/>
-              <i className="ri-mail-fill"></i>
-              {errors.name && <p className="error-message">{errors.name}</p>}
+            <div className={`acess__box ${isEditing === 'name' ? '' : isSubmitted && errors.name ? 'has-error' : isSubmitted && 'has-success'}`}>
+              <input type="text" placeholder="Nome" className="acess__input" value={formData.name} onChange={(e) => handleFormEdit(e, 'name')} />
+              {isSubmitted && errors.name && <span className="error-message">{errors.name}</span>}
+              {isSubmitted && !errors.name && <span className="success-message">OK</span>}
             </div>
-            <div className="acess__box">
-              <input type="text" placeholder="Telefone" required className="acess__input" value={formData.phone} onChange={(e) => {handleFormEdit(e, 'phone')}}/>
-              <i className="ri-mail-fill"></i>
-              {errors.phone && <p className="error-message">{errors.phone}</p>}
+            <div className={`acess__box ${isEditing === 'phone' ? '' : isSubmitted && errors.phone ? 'has-error' : isSubmitted && 'has-success'}`}>
+              <input type="text" placeholder="Telefone" className="acess__input" value={formData.phone} onChange={(e) => handleFormEdit(e, 'phone')} />
+              {isSubmitted && errors.phone && <span className="error-message">{errors.phone}</span>}
+              {isSubmitted && !errors.phone && <span className="success-message">OK</span>}
             </div>
-            <div className="acess__box">
-              <input type="password" placeholder="Senha" required className="acess__input" value={formData.password} onChange={(e) => {handleFormEdit(e, 'password')}}/>
-              <i className="ri-lock-2-fill"></i>
-              {errors.password && <p className="error-message">{errors.password}</p>}
+            <div className={`acess__box ${isEditing === 'password' ? '' : isSubmitted && errors.password ? 'has-error' : isSubmitted && 'has-success'}`}>
+              <input type="password" placeholder="Senha" className="acess__input" value={formData.password} onChange={(e) => handleFormEdit(e, 'password')} />
+              {isSubmitted && errors.password && <span className="error-message">{errors.password}</span>}
+              {isSubmitted && !errors.password && <span className="success-message">OK</span>}
             </div>
           </div>
           <button type="submit" className="acess__button">Registrar</button>
-          <div className="acess__register">
-          </div>
+          <div className="acess__register"></div>
         </form>
       </div>
     </>

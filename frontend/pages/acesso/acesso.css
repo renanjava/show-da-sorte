@@ -7,6 +7,8 @@
   /*Color mode HSL(hue, saturation, lightness)*/
   --white-color: hsl(0, 0%, 100%);
   --black-color: hsl(0, 0%, 0%);
+  --red-color: #dc3545;
+  --green-color: #28a745;
 
   /*========== Font and typography ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/
@@ -59,8 +61,8 @@ img {
 .acess__form {
   position: relative;
   margin-inline: 1.5rem;
-  background-color: hsla(0, 0%, 0%, 0.534);
-  border: 2px solid hsla(0, 0%, 100%, .7);
+  background-color: hsla(0, 0%, 0%, 0.75);
+  border: 2px solid hsl(0, 0%, 0%);
   padding: 2.5rem 1rem;
   color: var(--white-color);
   border-radius: 1rem;
@@ -79,7 +81,7 @@ img {
 }
 
 .acess__inputs {
-  row-gap: 1.25rem;
+  row-gap: 1rem;
   margin-bottom: 1rem;
 }
 
@@ -87,15 +89,11 @@ img {
   grid-template-columns: 1fr max-content;
   column-gap: .75rem;
   align-items: center;
-  border: 2px solid hsla(0, 0%, 100%, .7);
+  border: 2px solid hsla(0, 0%, 100%, 0.7);
   padding-inline: 1.25rem;
   border-radius: 4rem;
-}
-
-.acess__input, 
-.acess__button {
-  border: none;
-  outline: none;
+  position: relative;
+  margin-bottom: 1.2rem;
 }
 
 .acess__input {
@@ -103,6 +101,8 @@ img {
   background: none;
   color: var(--white-color);
   padding-block: 1rem;
+  border: none;
+  outline: none;
 }
 
 .acess__input::placeholder {
@@ -111,36 +111,36 @@ img {
 
 .acess__box i {
   font-size: 1.25rem;
+  position: absolute;
+  right: 1rem;
 }
 
-.acess__check, 
-.acess__check-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.acess__box.has-error i {
+  color: var(--red-color);
 }
 
-.acess__check {
-  margin-bottom: 1rem;
+.acess__box.has-success i {
+  color: var(--green-color);
+}
+
+.acess__box .error-message,
+.acess__box .success-message {
   font-size: var(--small-font-size);
+  position: absolute;
+  bottom: -20px;
+  left: 1.5rem;
+  color: var(--red-color);
+  display: none;
 }
 
-.acess__check-box {
-  column-gap: .5rem;
+.acess__box.has-error .error-message {
+  display: block;
+  color: var(--red-color);
 }
 
-.acess__check-input {
-  width: 1rem;
-  height: 1rem;
-  accent-color: var(--white-color);
-}
-
-.acess__forgot {
-  color: var(--white-color);
-}
-
-.acess__forgot:hover {
-  text-decoration: underline;
+.acess__box.has-success .success-message {
+  display: block;
+  color: var(--green-color);
 }
 
 .acess__button {
@@ -166,6 +166,14 @@ img {
 
 .acess__register a:hover {
   text-decoration: underline;
+}
+
+.acess__box.has-error {
+  border-color: var(--red-color);
+}
+
+.acess__box.has-success {
+  border-color: var(--green-color);
 }
 
 /*=============== BREAKPOINTS ===============*/
