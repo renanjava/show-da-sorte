@@ -25,12 +25,12 @@ const RegisterPage: React.FC = () => {
               <i className="ri-mail-fill"></i>
             </div>
             <div className="acess__box">
-              <input type="password" placeholder="Senha" required className="acess__input"/>
-              <i className="ri-lock-2-fill"></i>
-            </div>
-            <div className="acess__box">
               <input type="text" placeholder="Telefone" required className="acess__input"/>
               <i className="ri-mail-fill"></i>
+            </div>
+            <div className="acess__box">
+              <input type="password" placeholder="Senha" required className="acess__input"/>
+              <i className="ri-lock-2-fill"></i>
             </div>
           </div>
           <button type="submit" className="acess__button">Registrar</button>

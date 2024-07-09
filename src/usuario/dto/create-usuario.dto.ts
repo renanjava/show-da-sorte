@@ -1,9 +1,10 @@
-import { IsEmail, IsEnum, IsNotEmpty, IsPhoneNumber, IsString, MaxLength, MinLength } from "class-validator";
+import { IsEmail, IsEnum, IsNotEmpty, IsPhoneNumber, IsString, Matches, MaxLength, MinLength } from "class-validator";
 
 export class CreateUsuarioDto{
 
     @IsNotEmpty({message: "O email é obrigatório"})
     @IsEmail({}, {message: "O email deve ser válido"})
+    @Matches(/@(hotmail|gmail)\.com$/, { message: 'Email deve ser hotmail.com ou gmail.com' })
     email: string;
 
     @IsNotEmpty({message: "O nome é obrigatório"})
