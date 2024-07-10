@@ -22,9 +22,9 @@ export class UsuarioController {
     return this.usuarioService.findOne(id);
   }
 
-  @Get('email/:email')
-  findByEmail(@Param('email') email: string) {
-    return this.usuarioService.findByEmail(email);
+  @Get('custom/:value')
+  findByCustom(column: string, @Param('value') value: string) {
+    return this.usuarioService.findByCustom(column, value);
   }
 
   @Patch(':id')
