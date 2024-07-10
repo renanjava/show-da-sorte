@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { FormErrors } from './types';
 
-export function getClassName(isEditing: string | null, isSubmitted: boolean, errors: FormErrors, id: string): string {
+export function getClassName(isEditing: string[] | null, isSubmitted: boolean, errors: FormErrors, id: string): string {
   const hasError = isSubmitted && errors[id];
   const hasSuccess = isSubmitted && !errors[id];
 
-  return `acess__box ${isEditing ? '' : hasError ? 'has-error' : hasSuccess ? 'has-success' : ''}`;
+  return `acess__box ${isEditing?.includes(id) ? '' : hasError ? 'has-error' : hasSuccess ? 'has-success' : ''}`;
 }
 
 export const useFormHandling = () => {
@@ -26,19 +26,19 @@ export const useFormHandling = () => {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isEditing, setIsEditing] = useState<string | null>(null);
+  const [isEditing, setIsEditing] = useState<string[]>([]);
 
-  const handleFormEdit = (event: React.ChangeEvent<HTMLInputElement>, name: keyof typeof formData) => {
-    setFormData({ ...formData, [name]: event.target.value });
-    setErrors({ ...errors, [name]: '' });
-    setIsEditing(name);
+  const handleFormEdit = (event: React.ChangeEvent<HTMLInputElement>, field: keyof typeof formData) => {
+    setFormData({ ...formData, [field]: event.target.value });
+    setErrors({ ...errors, [field]: '' });
+    setIsEditing(prevEditing => [...prevEditing, field]);
   };
 
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     try {
       event.preventDefault();
       setIsSubmitted(true);
-      setIsEditing(null);
+      setIsEditing([]);
 
       const response = await fetch('http://localhost:4000/usuario', {
         method: 'POST',
