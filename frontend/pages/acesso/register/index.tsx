@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import { SITE_NAME } from '../../../../src/constants/constants';
 import '../acesso.css';
-import { FormErrors } from './types';
 import { getClassName, useFormHandling } from './utilities';
 
 const RegisterPage: React.FC = () => {
