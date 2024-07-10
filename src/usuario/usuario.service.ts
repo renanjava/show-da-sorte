@@ -30,4 +30,8 @@ export class UsuarioService {
   async remove(id: string) {
     return await this.usuarioModel.deleteOne({ _id: id }).exec()
   }
+
+  async findByEmail(email: string) {
+    return await this.usuarioModel.findOne({email}).exec()
+  }
 }

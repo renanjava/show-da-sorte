@@ -1,9 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import { SITE_NAME } from '../../../../src/constants/constants';
 import '../acesso.css';
-import Extra from '../../../components/Extra';
 
 const LoginPage: React.FC = () => {
   return (

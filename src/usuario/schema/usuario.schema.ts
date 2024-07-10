@@ -7,3 +7,5 @@ export const UsuarioSchema = new mongoose.Schema({
     role: String,
     phone: String
 })
+
+export const User = mongoose.model('User', UsuarioSchema);
