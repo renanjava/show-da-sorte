@@ -3,6 +3,7 @@ import React from 'react';
 import Head from 'next/head';
 import { SITE_NAME } from '../../../../src/constants/constants';
 import '../acesso.css';
+import Extra from '../../../components/Extra';
 
 const RegisterPage: React.FC = () => {
   interface FormErrors {
@@ -111,7 +112,6 @@ const RegisterPage: React.FC = () => {
             </div>
           </div>
           <button type="submit" className="acess__button">Registrar</button>
-          <div className="acess__register"></div>
         </form>
       </div>
     </>

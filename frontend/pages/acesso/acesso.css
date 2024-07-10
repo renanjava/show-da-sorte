@@ -107,6 +107,7 @@ img {
 
 .acess__input::placeholder {
   color: var(--white-color);
+  opacity: 0.5;
 }
 
 .acess__box i {
@@ -147,11 +148,16 @@ img {
   width: 100%;
   padding: 1rem;
   margin-bottom: 1rem;
+  margin-top: 2rem;
   background-color: var(--white-color);
   border-radius: 4rem;
   color: var(--black-color);
   font-weight: 500;
   cursor: pointer;
+}
+
+.acess__button:hover {
+  opacity: 0.8;
 }
 
 .acess__register {
