@@ -1,10 +1,12 @@
 import { IsEmail, IsEnum, IsNotEmpty, IsPhoneNumber, IsString, Matches, MaxLength, MinLength } from "class-validator";
+import { IsUnique } from "src/decorators/IsUnique";
 
 export class CreateUsuarioDto{
 
     @IsNotEmpty({message: "Email é obrigatório"})
     @IsEmail({}, {message: "Email deve ser válido"})
     @Matches(/@(hotmail|gmail)\.com$/, { message: 'Email deve ser hotmail.com ou gmail.com' })
+    @IsUnique("email", {message: "Email já está em uso"})
     email: string;
 
     @IsNotEmpty({message: "Nome é obrigatório"})
@@ -24,5 +26,6 @@ export class CreateUsuarioDto{
 
     @IsNotEmpty({message: "Número de telefone é obrigatório"})
     @IsPhoneNumber(undefined, {message: "Número de telefone deve ser válido"})
+    @IsUnique("phone", {message: "Telefone já está em uso"})
     phone: string;
 }

@@ -8,24 +8,9 @@ export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
 
   @Post()
-  async createUser(@Body() createUsuarioDto: CreateUsuarioDto) {
-    try {
-      const usuario = await this.usuarioService.create(createUsuarioDto);
-      return { message: 'Usuário criado com sucesso', usuario };
-    } catch (error) {
-      if (error.code === 11000) {
-        console.log(error.errmsg)
-        const message = [`${this.usuarioService.extractDuplicateKey(error.errmsg)} já está em uso.`];
-        throw new HttpException(
-          {
-            message: message,
-            error: 'Bad Request',
-            statusCode: HttpStatus.BAD_REQUEST,
-          },
-          HttpStatus.BAD_REQUEST
-        );
-      }
-    }
+  async create(@Body() createUsuarioDto: CreateUsuarioDto) {
+    const usuario = await this.usuarioService.create(createUsuarioDto);
+    return usuario;
   }
 
   @Get()
@@ -38,8 +23,8 @@ export class UsuarioController {
     return this.usuarioService.findOne(id);
   }
 
-  @Get('custom/:value')
-  findByCustom(column: string, @Param('value') value: string) {
+  @Get('custom/:column/:value')
+  findByCustom(@Param('column') column: string, @Param('value') value: string) {
     return this.usuarioService.findByCustom(column, value);
   }
 

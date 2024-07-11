@@ -17,13 +17,6 @@ export const useFormHandling = () => {
     role: 'usuario'
   });
 
-  const errorMappings: { [key: string]: RegExp } = {
-    email: /\bemail\b/i,
-    name: /\bnome\b/i,
-    phone: /\btelefone\b/i,
-    password: /\bsenha\b/i
-  };
-
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isEditing, setIsEditing] = useState<string[]>([]);
@@ -57,11 +50,14 @@ export const useFormHandling = () => {
 
         if (Array.isArray(message)) {
           message.forEach(msg => {
-            Object.keys(errorMappings).forEach(key => {
-              if (errorMappings[key].test(msg)) {
-                fieldErrors[key] = msg;
-              }
-            });
+            if (/\bemail\b/i.test(msg)) 
+              fieldErrors.email = msg;
+            else if (/\bnome\b/i.test(msg)) 
+              fieldErrors.name = msg;
+            else if (/\btelefone\b/i.test(msg)) 
+              fieldErrors.phone = msg;
+            else if (/\bsenha\b/i.test(msg)) 
+              fieldErrors.password = msg;
           });
         }
 
