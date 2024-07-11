@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpException, HttpStatus, Catch, ArgumentsHost, ExceptionFilter } from '@nestjs/common';
 import { UsuarioService } from './usuario.service';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
@@ -8,8 +8,24 @@ export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
 
   @Post()
-  create(@Body() createUsuarioDto: CreateUsuarioDto) {
-    return this.usuarioService.create(createUsuarioDto);
+  async createUser(@Body() createUsuarioDto: CreateUsuarioDto) {
+    try {
+      const usuario = await this.usuarioService.create(createUsuarioDto);
+      return { message: 'Usuário criado com sucesso', usuario };
+    } catch (error) {
+      if (error.code === 11000) {
+        console.log(error.errmsg)
+        const message = [`${this.usuarioService.extractDuplicateKey(error.errmsg)} já está em uso.`];
+        throw new HttpException(
+          {
+            message: message,
+            error: 'Bad Request',
+            statusCode: HttpStatus.BAD_REQUEST,
+          },
+          HttpStatus.BAD_REQUEST
+        );
+      }
+    }
   }
 
   @Get()
@@ -36,4 +52,5 @@ export class UsuarioController {
   remove(@Param('id') id: string) {
     return this.usuarioService.remove(id);
   }
+
 }

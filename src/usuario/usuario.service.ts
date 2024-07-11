@@ -34,5 +34,12 @@ export class UsuarioService {
   async findByCustom(column: string, value: string){
     return await this.usuarioModel.findOne({ [column]: value }).exec();
   }
+
+  extractDuplicateKey(message){
+    if(message.indexOf("email") != -1)
+      return "Email"
+    if(message.indexOf("phone") != -1)
+      return "Telefone"
+  }
   
 }
