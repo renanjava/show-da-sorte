@@ -31,16 +31,18 @@ export const useFormHandling = () => {
     try {
       event.preventDefault();
       setIsSubmitted(true);
-      setIsEditing([]);
-
+      setIsEditing([]); 
       const response = await fetch('http://localhost:4000/usuario', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(
+          {
+            ...formData, 
+            phone: `+55${formData.phone}`
+          })
       });
-
       if (response.status === 400) {
         const json = await response.json();
         console.log(response.status);
