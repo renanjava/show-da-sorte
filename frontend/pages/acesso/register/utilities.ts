@@ -66,10 +66,7 @@ export const useFormHandling = () => {
         setErrors(fieldErrors);
         return;
       }
-
-      const json = await response.json();
-      console.log(response.status);
-      console.log(json);
+      
     } catch (error) {
       console.error('Erro ao registrar usuário: ', error);
     }

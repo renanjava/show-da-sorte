@@ -4,16 +4,14 @@ import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Usuario } from './usuario';
+import * as bcrypt from 'bcrypt'
 
 @Injectable()
 export class UsuarioService {
-  static findByCustom(property: string, value: any) {
-      throw new Error('Method not implemented.');
-  }
   constructor(@InjectModel('Usuario') private readonly usuarioModel: Model<Usuario>){}
 
   async create(createUsuarioDto: CreateUsuarioDto) {
-    const createdUsuario = new this.usuarioModel(createUsuarioDto)
+    const createdUsuario = new this.usuarioModel({...createUsuarioDto, password:`${bcrypt.hashSync(createUsuarioDto.password, 8)}`})
     return await createdUsuario.save()
   }
 

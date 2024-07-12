@@ -18,19 +18,10 @@ const LoginPage: React.FC = () => {
           <div className="acess__inputs">
             <div className="acess__box">
               <input type="email" placeholder="Email" required className="acess__input"/>
-              <i className="ri-mail-fill"></i>
             </div>
             <div className="acess__box">
               <input type="password" placeholder="Senha" required className="acess__input"/>
-              <i className="ri-lock-2-fill"></i>
             </div>
-          </div>
-          <div className="acess__check">
-            <div className="acess__check-box">
-              <input type="checkbox" className="acess__check-input" id="user-check"/>
-              <label htmlFor="user-check" className="acess__check-label">Lembre-me</label>
-            </div>
-            <a href="#" className="acess__forgot">Esqueceu a senha?</a>
           </div>
           <button type="submit" className="acess__button">Acessar</button>
           <div className="acess__register">

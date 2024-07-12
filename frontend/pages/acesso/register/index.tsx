@@ -40,7 +40,7 @@ const RegisterPage: React.FC = () => {
             <div id="nameDiv" className={`acess__box ${getClassName(isEditing, isSubmitted, errors, 'name')}`}>
               <input
                 type="text"
-                placeholder="Nome"
+                placeholder="Nome Completo"
                 className="acess__input"
                 value={formData.name}
                 onChange={(e) => handleFormEdit(e, 'name')}
