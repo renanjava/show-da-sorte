@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpException, HttpStatus, Catch, ArgumentsHost, ExceptionFilter } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Request, UseGuards } from '@nestjs/common';
 import { UsuarioService } from './usuario.service';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('usuario')
 export class UsuarioController {
@@ -36,6 +37,12 @@ export class UsuarioController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.usuarioService.remove(id);
+  }
+
+  @UseGuards(AuthGuard('local'))
+  @Post('/login')
+  async login(@Request() req) {
+    return req.user;
   }
 
 }

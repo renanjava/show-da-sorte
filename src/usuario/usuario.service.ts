@@ -35,5 +35,9 @@ export class UsuarioService {
   async findByCustom(column: string, value: string){
     return await this.usuarioModel.findOne({ [column]: value }).exec();
   }
+
+  async findEmail(email: string) {
+    return this.usuarioModel.findOne({email: email});
+  }
   
 }
