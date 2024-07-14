@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FormErrors } from './types';
+import { URL_BACKEND } from '../../../../src/constants/constants';
 
 export function getClassName(isEditing: string[] | null, isSubmitted: boolean, errors: FormErrors, id: string): string {
   const hasError = isSubmitted && errors[id];
@@ -32,7 +33,7 @@ export const useFormHandling = () => {
       event.preventDefault();
       setIsSubmitted(true);
       setIsEditing([]); 
-      const response = await fetch('http://localhost:4000/usuario', {
+      const response = await fetch(`${URL_BACKEND}usuario`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { URL_BACKEND } from "../../../../src/constants/constants";
 
 export const useFormHandling = () => {
     const [formData, setFormData] = useState({
@@ -10,7 +11,7 @@ export const useFormHandling = () => {
     };
     const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const response = await fetch('http://localhost:4000/usuario/login', {
+        const response = await fetch(`${URL_BACKEND}usuario/login`, {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
@@ -22,6 +23,7 @@ export const useFormHandling = () => {
             console.log("sem permissão (dados inválidos)")
             return;
         }
+        console.log(response.status)
         console.log(json)
 
         return;
