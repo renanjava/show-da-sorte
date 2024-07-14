@@ -7,6 +7,7 @@ import '../public/assets/vendor/glightbox/css/glightbox.min.css';
 import '../public/assets/vendor/swiper/swiper-bundle.min.css';
 import { SITE_NAME } from '../../src/constants/constants';
 import Link from 'next/link';
+import { arquivoTemporario } from '../pages/home/arquivo-temporario';
 
 const Header: React.FC = () => {
   return (
@@ -29,7 +30,7 @@ const Header: React.FC = () => {
                 <li><a href="/regiao.html">Itambé</a></li>
               </ul>
             </li>
-            <li><a href="/contato.html">Contato</a></li>
+            <li><button onClick={arquivoTemporario}>Testando</button></li>
             <li><a href="/acesso/login">Login</a></li>
           </ul>
           <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>

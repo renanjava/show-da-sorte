@@ -3,6 +3,5 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/acesso/login": "pages/acesso/login.js",
-  "/": "pages/index.js",
-  "/acesso/register": "pages/acesso/register.js"
+  "/": "pages/index.js"
 }

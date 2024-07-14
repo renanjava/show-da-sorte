@@ -2,6 +2,10 @@ import { useState } from "react";
 import { URL_BACKEND } from "../../../../src/constants/constants";
 
 export const useFormHandling = () => {
+    function storeToken(token: string) {
+        sessionStorage.setItem('jwtToken', token);
+      }
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -25,9 +29,11 @@ export const useFormHandling = () => {
         }
 
         console.log(response.status)
-        console.log(json)
+        console.log(json.access_token)
 
         if(response.status == 201){
+            const token = json.access_token
+            storeToken(token)
             window.location.href = '/';
         }
         
