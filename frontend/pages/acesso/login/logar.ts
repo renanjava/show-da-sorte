@@ -11,7 +11,7 @@ export const useFormHandling = () => {
     };
     const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const response = await fetch(`${URL_BACKEND}usuario/login`, {
+        const response = await fetch(`${URL_BACKEND}/usuario/login`, {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
@@ -23,8 +23,14 @@ export const useFormHandling = () => {
             console.log("sem permissão (dados inválidos)")
             return;
         }
+
         console.log(response.status)
         console.log(json)
+
+        if(response.status == 201){
+            window.location.href = '/';
+        }
+        
 
         return;
         }

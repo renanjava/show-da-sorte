@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { SITE_NAME } from '../../../../src/constants/constants';
 import '../acesso.css';
 import { useFormHandling } from './logar';
+import router, { useRouter } from 'next/router';
 
 const LoginPage: React.FC = () => {
   const {
@@ -10,6 +11,7 @@ const LoginPage: React.FC = () => {
     handleFormEdit,
     handleFormSubmit
   } = useFormHandling();
+  
   return (
     <>
       <Head>

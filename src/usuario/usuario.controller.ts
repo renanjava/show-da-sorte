@@ -31,7 +31,6 @@ export class UsuarioController {
     return this.usuarioService.findOne(id);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get('custom/:column/:value')
   findByCustom(@Param('column') column: string, @Param('value') value: string) {
     return this.usuarioService.findByCustom(column, value);

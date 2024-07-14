@@ -33,7 +33,7 @@ export const useFormHandling = () => {
       event.preventDefault();
       setIsSubmitted(true);
       setIsEditing([]); 
-      const response = await fetch(`${URL_BACKEND}usuario`, {
+      const response = await fetch(`${URL_BACKEND}/usuario`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -66,6 +66,10 @@ export const useFormHandling = () => {
 
         setErrors(fieldErrors);
         return;
+      }
+
+      if(response.status == 201){
+        window.location.href = '/';
       }
       
     } catch (error) {
