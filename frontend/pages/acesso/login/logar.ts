@@ -20,7 +20,10 @@ export const useFormHandling = () => {
             headers: {
             'Content-Type': 'application/json',
             },
-            body: JSON.stringify(formData)
+            body: JSON.stringify({
+                email: `${formData.email}`,
+                password: `${formData.password}`
+              }),
         });
         const json = await response.json();
         if(response.status === 401){

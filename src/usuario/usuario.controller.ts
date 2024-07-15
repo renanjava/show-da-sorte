@@ -51,7 +51,8 @@ export class UsuarioController {
   @UseGuards(AuthGuard('local'))
   @Post('/login')
   async login(@Request() req) {
-    return this.authService.login(req.user);
+    console.log("oi req:"+req.body.email)
+    return this.authService.login(req.body);
   }
 
 }

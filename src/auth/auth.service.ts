@@ -12,22 +12,21 @@ export class AuthService {
         private tokenService: TokenService
     ){}
 
-    async validarUsuario(email: string, senha: string): Promise<any> {
-        const usuario = await this.usuarioService.findEmail(email);
-        if (usuario && bcrypt.compareSync(senha, usuario.password)) {
-            const { password, ...result } = usuario;
-            return result;
-        }
-        return null;
+  async validarUsuario(email: string, senha: string): Promise<any> {
+      const usuario = await this.usuarioService.findEmail(email);
+      if (usuario && bcrypt.compareSync(senha, usuario.password)) {
+          const { password, ...result } = usuario;
+          return result;
       }
-    
-      async login(usuario){
-        const payload = { username: usuario.email, sub: usuario.id };
-        const token = this.jwtService.sign(payload)
-        console.log("oi:"+usuario)
-        this.tokenService.save(token, usuario.email)
-        return {
-          access_token: token
-        };
-      }
+      return null;
+  }
+  
+    async login(usuario){
+      const payload = { username: usuario.email};
+      const token = this.jwtService.sign(payload)
+      await this.tokenService.save(token, usuario.email)
+      return {
+        access_token: token
+      };
+  }
 }
