@@ -16,4 +16,5 @@ export async function arquivoTemporario(){
     const json = await response.json()
     console.log(response.status)
     console.log(json)
+    console.log(getToken())
 }

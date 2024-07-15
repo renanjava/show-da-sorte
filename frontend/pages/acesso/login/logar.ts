@@ -34,7 +34,7 @@ export const useFormHandling = () => {
         if(response.status == 201){
             const token = json.access_token
             storeToken(token)
-            window.location.href = '/';
+            //window.location.href = '/';
         }
         
 
