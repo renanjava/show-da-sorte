@@ -7,11 +7,10 @@ import '../public/assets/vendor/glightbox/css/glightbox.min.css';
 import '../public/assets/vendor/swiper/swiper-bundle.min.css';
 import { SITE_NAME } from '../../src/constants/constants';
 import Link from 'next/link';
-import { arquivoTemporario } from '../pages/home/arquivo-temporario';
 
 const Header: React.FC = () => {
   return (
-    <>
+    <div>
     <header id="header" className="header d-flex align-items-center sticky-top">
       <div className="container-fluid position-relative d-flex align-items-center justify-content-between">
         <Link href="/" legacyBehavior>
@@ -30,7 +29,7 @@ const Header: React.FC = () => {
                 <li><a href="/regiao.html">Itambé</a></li>
               </ul>
             </li>
-            <li><button onClick={arquivoTemporario}>Testando</button></li>
+            <li><a>Testando</a></li>
             <li><a href="/acesso/login">Login</a></li>
           </ul>
           <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -43,7 +42,7 @@ const Header: React.FC = () => {
         </div>
       </div>
     </header>
-    </>
+    </div>
   );
 }
 

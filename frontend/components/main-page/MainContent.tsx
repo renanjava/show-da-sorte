@@ -5,7 +5,7 @@ import { SITE_NAME } from '../../../src/constants/constants';
 
 const MainContent: React.FC = () => {
   return (
-    <>
+    <div>
     <main className="main">
       <section id="hero" className="hero section">
         <div className="container">
@@ -26,7 +26,7 @@ const MainContent: React.FC = () => {
         </div>
       </section>
     </main>
-    </>
+    </div>
   );
 }
 

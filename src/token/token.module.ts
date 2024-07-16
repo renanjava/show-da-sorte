@@ -4,8 +4,6 @@ import { TokenSchema } from './token.schema';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from 'src/auth/auth.module';
 import { TokenController } from './token.controller';
-import { UsuarioService } from 'src/usuario/usuario.service';
-import { AuthService } from 'src/auth/auth.service';
 import { UsuarioModule } from 'src/usuario/usuario.module';
 
 @Module({

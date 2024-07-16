@@ -9,14 +9,14 @@ import JsFiles from '../../components/main-page/JsFiles';
 const HomePage: React.FC = () => {
 
   return (
-    <>
+    <div>
       <DefaultHead />
       <Header />
       <MainContent />
       <Footer />
       <Extra />
       <JsFiles />
-    </>
+    </div>
   );
 };
 

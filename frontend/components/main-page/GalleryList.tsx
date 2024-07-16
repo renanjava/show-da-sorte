@@ -24,11 +24,11 @@ const GalleryList = () => {
   };
 
   return (
-    <>
+    <div>
     <ul id="lista-premios" className="row gy-4 justify-content-center">
       {createGalleryItems()}
     </ul>
-    </>
+    </div>
   );
 };
 

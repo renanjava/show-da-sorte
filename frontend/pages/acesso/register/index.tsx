@@ -15,7 +15,7 @@ const RegisterPage: React.FC = () => {
   } = useFormHandling();
 
   return (
-    <>
+    <div>
       <Head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -74,7 +74,7 @@ const RegisterPage: React.FC = () => {
           <button type="submit" className="acess__button">Registrar</button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

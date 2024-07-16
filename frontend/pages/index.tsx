@@ -3,9 +3,9 @@ import HomePage from './home/HomePage';
 
 const App: React.FC = () => {
   return (
-    <>
+    <div>
       <HomePage />  
-    </>
+    </div>
   );
 };
 

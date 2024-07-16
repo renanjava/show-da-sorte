@@ -4,7 +4,7 @@ import { SITE_NAME } from '../../src/constants/constants';
 
 const DefaultHead: React.FC = () => {
   return (
-    <>
+    <div>
     <Head>
       <meta charSet="utf-8" />
       <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -12,7 +12,7 @@ const DefaultHead: React.FC = () => {
       <meta content="" name="description" />
       <meta content="" name="keywords" />   
     </Head>
-    </>
+    </div>
   );
 }
 
