@@ -16,7 +16,7 @@ const LoginPage: React.FC = () => {
   } = useFormHandling();
 
   return (
-    <>
+    <div>
       <Head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -57,7 +57,7 @@ const LoginPage: React.FC = () => {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

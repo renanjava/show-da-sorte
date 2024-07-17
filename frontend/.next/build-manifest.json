@@ -30,10 +30,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/acesso/login": [
+    "/carrinho": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/acesso/login.js"
+      "static/chunks/pages/carrinho.js"
     ]
   },
   "ampFirstPages": []

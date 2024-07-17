@@ -11,6 +11,7 @@ import Cookies from 'js-cookie';
 import { arquivoTemporario } from '../pages/home/arquivo-temporario';
 import Logout from '../pages/home/Logout';
 import Acesso from '../pages/home/Acesso';
+import Perfil from '../pages/home/Perfil';
 
 const Header: React.FC = () => {
 
@@ -43,7 +44,7 @@ const Header: React.FC = () => {
               </ul>
             </li>
             <li><button onClick={arquivoTemporario}>Testando</button></li>
-            <li>{isLoggedIn ? <Logout /> : <Acesso />}</li>
+            {isLoggedIn ? [<li><Logout /></li>,<li><Perfil /></li>] : <li><Acesso /></li>}
           </ul>
           <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
