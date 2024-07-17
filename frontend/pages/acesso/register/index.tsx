@@ -72,6 +72,12 @@ const RegisterPage: React.FC = () => {
             </div>
           </div>
           <button type="submit" className="acess__button">Registrar</button>
+          <div className="acess__redirect">
+            Já tem uma conta? <a href="/acesso/login">Logar-se</a>
+          </div>
+          <div className="acess__redirect">
+            <a href="/">Voltar ao início</a>
+          </div>
         </form>
       </div>
     </div>

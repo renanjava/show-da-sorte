@@ -160,17 +160,17 @@ img {
   opacity: 0.8;
 }
 
-.acess__register {
+.acess__redirect {
   font-size: var(--small-font-size);
   text-align: center;
 }
 
-.acess__register a {
+.acess__redirect a {
   color: var(--white-color);
   font-weight: 500;
 }
 
-.acess__register a:hover {
+.acess__redirect a:hover {
   text-decoration: underline;
 }
 
