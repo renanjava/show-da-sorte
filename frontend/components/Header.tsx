@@ -41,7 +41,7 @@ const Header: React.FC = () => {
               </ul>
             </li>
             <li><button onClick={arquivoTemporario}>Testando</button></li>
-            <li><a href="/acesso/login">{isLoggedIn ? 'Logado' : 'Login'}</a></li>
+            <li><a href={isLoggedIn ? '/' : 'acesso/login'} onClick={isLoggedIn ? Cookies.remove("authToken") : ''}>{isLoggedIn ? 'Logout' : 'Login'}</a></li>
           </ul>
           <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
