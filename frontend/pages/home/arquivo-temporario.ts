@@ -8,18 +8,20 @@ function getToken(): string | null {
   }
 
 export async function arquivoTemporario(){
+  const tokenCookie = getToken()
+  if(tokenCookie){
     const response = await fetch(`${URL_BACKEND}/usuario`, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${getToken()}`,
-          'Content-Type': 'application/json',
-        }
-      })
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${tokenCookie}`,
+        'Content-Type': 'application/json',
+      }
+    })
     const json = await response.json()
     console.log(json)
 
     if(response.status == 401){
-        console.log("cookies dentro do 401: "+Cookies.get('authToken'))
+        console.log("cookies dentro do 401: "+tokenCookie)
         const responseRefresh = await fetch(`${URL_BACKEND}/token/refresh`, {
             method: 'PUT',
             headers: {
@@ -27,7 +29,7 @@ export async function arquivoTemporario(){
             },
             body: JSON.stringify(
               {
-                oldToken: Cookies.get('authToken')
+                oldToken: tokenCookie
               })
           })
           const jsonRefresh = await responseRefresh.json()
@@ -36,4 +38,7 @@ export async function arquivoTemporario(){
             arquivoTemporario()
           
     }
+  }else{
+    return;
+  }
 }

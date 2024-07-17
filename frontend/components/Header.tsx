@@ -9,6 +9,8 @@ import { SITE_NAME } from '../../src/constants/constants';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
 import { arquivoTemporario } from '../pages/home/arquivo-temporario';
+import Logout from '../pages/home/Logout';
+import Acesso from '../pages/home/Acesso';
 
 const Header: React.FC = () => {
 
@@ -41,7 +43,7 @@ const Header: React.FC = () => {
               </ul>
             </li>
             <li><button onClick={arquivoTemporario}>Testando</button></li>
-            <li><a href={isLoggedIn ? '/' : 'acesso/login'} onClick={isLoggedIn ? Cookies.remove("authToken") : ''}>{isLoggedIn ? 'Logout' : 'Login'}</a></li>
+            <li>{isLoggedIn ? <Logout /> : <Acesso />}</li>
           </ul>
           <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
