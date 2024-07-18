@@ -16,7 +16,13 @@ export class TokenController {
 
   @Post('validate')
   async validate(@Body() body: ValidateTokenDto){
-    return this.tokenService.validarToken(body.token)
+    try{
+      return this.tokenService.validarToken(body.token)
+    }catch(err){
+      console.error("token expirado")
+      console.log("token expirado")
+    }
+    
   }
 
 }

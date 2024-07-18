@@ -5,6 +5,8 @@ import { Token } from './token';
 import { UsuarioService } from 'src/usuario/usuario.service';
 import { AuthService } from 'src/auth/auth.service';
 import { JwtService } from '@nestjs/jwt';
+import { TokenError } from 'src/exceptions/token-error';
+import { ExceptionsHandler } from '@nestjs/core/exceptions/exceptions-handler';
 
 @Injectable()
 export class TokenService {
@@ -41,9 +43,15 @@ export class TokenService {
   async validarToken(token: string) {
     try {
       const decoded = this.jwtService.verify(token)
+      if(!decoded)
+        throw new DOMException();
       return decoded
     } catch (err) {
-      return null
+        let buscarToken = await this.tokenModel.findOne({hash: token})
+        if(buscarToken)
+          return new TokenError("EXPIRED_TOKEN","Token expirado")
+        else
+          return new TokenError("INVALID_TOKEN","Token inválido")
     }
   }
 }

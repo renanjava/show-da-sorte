@@ -41,11 +41,7 @@ const Perfil: React.FC = () => {
                     const dataGet = await responseGet.json()
                     console.log("debug, dataGet: " +dataGet)
                     setUserData(dataGet)
-                } else {
-                    window.location.href = '/login';
                 }
-            } else {
-                window.location.href = '/login';
             }
         };
 
