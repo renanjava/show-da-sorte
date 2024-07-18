@@ -1,13 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./style.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Cookies from 'js-cookie'
+import { URL_BACKEND } from '../../../src/constants/constants';
+
+interface UserData{
+    email: string,
+    name: string,
+    phone: string,
+}
 
 const Perfil: React.FC = () => {
     const [activeTab, setActiveTab] = useState('general');
+    const [userData, setUserData] = useState<UserData>();
 
     const handleTabClick = (tab: string) => {
         setActiveTab(tab);
     };
+
+    useEffect(() => {
+        const validateToken = async () => {
+            const token = Cookies.get('authToken');
+            if (token) {
+                const response = await fetch(`${URL_BACKEND}/token/validate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ token: token }),
+                });
+                const data = await response.json();
+                if (response.ok) {   
+                    const responseGet = await fetch(`${URL_BACKEND}/usuario/${data.sub}`, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json',
+                        }
+                    });
+                    const dataGet = await responseGet.json()
+                    console.log("debug, dataGet: " +dataGet)
+                    setUserData(dataGet)
+                } else {
+                    window.location.href = '/login';
+                }
+            } else {
+                window.location.href = '/login';
+            }
+        };
+
+        validateToken();
+    }, []);
 
     return (
         <div className="body">
@@ -38,20 +81,20 @@ const Perfil: React.FC = () => {
                         <div className="col-md-9">
                             <div className="tab-content">
                                 {activeTab === 'general' && (
-                                    <div className="tab-pane fade active show" id="account-general">
+                                    <div id="account-general">
                                         <hr className="border-light m-0"/>
                                         <div className="card-body">
                                             <div className="form-group">
                                                 <label className="form-label">E-mail</label>
-                                                <input type="text" className="form-control mb-1"/>
+                                                <input type="text" className="form-control mb-1" value={userData ? userData.email : ''} readOnly />
                                             </div>
                                             <div className="form-group">
                                                 <label className="form-label">Nome Completo</label>
-                                                <input type="text" className="form-control"/>
+                                                <input type="text" className="form-control" value={userData ? userData.name : ''} readOnly />
                                             </div>
                                             <div className="form-group">
                                                 <label className="form-label">Telefone</label>
-                                                <input type="text" className="form-control"/>
+                                                <input type="text" className="form-control" value={userData ? userData.phone : ''} readOnly />
                                             </div>
                                         </div>
                                     </div>

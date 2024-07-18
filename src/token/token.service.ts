@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { Token } from './token';
 import { UsuarioService } from 'src/usuario/usuario.service';
 import { AuthService } from 'src/auth/auth.service';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class TokenService {
@@ -11,7 +12,8 @@ export class TokenService {
     @InjectModel('Token') private readonly tokenModel: Model<Token>,
     private usuarioService: UsuarioService,
     @Inject(forwardRef(() => AuthService))
-    private authService: AuthService
+    private authService: AuthService,
+    private jwtService: JwtService
   ){}
 
   async save(hash, email){
@@ -33,6 +35,15 @@ export class TokenService {
       return new HttpException({
         errorMessage: 'Token Inválido',
       }, HttpStatus.UNAUTHORIZED);
+    }
+  }
+
+  async validarToken(token: string) {
+    try {
+      const decoded = this.jwtService.verify(token)
+      return decoded
+    } catch (err) {
+      return null
     }
   }
 }
