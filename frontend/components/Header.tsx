@@ -11,6 +11,7 @@ import Cookies from 'js-cookie';
 import { arquivoTemporario } from '../pages/home/arquivo-temporario';
 import Logout from '../pages/home/Logout';
 import Acesso from '../pages/home/Acesso';
+import Carrinho from '../pages/home/Carrinho';
 import Perfil from '../pages/home/Perfil';
 
 const Header: React.FC = () => {
@@ -37,14 +38,15 @@ const Header: React.FC = () => {
           <ul>
             <li><a href="/" className="active">Início<br /></a></li>
             <li><a href="/premios.html">Prêmios</a></li>
-            <li className="dropdown">
-              <a href="/regiao.html"><span>Região</span> <i className="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="/regiao.html">Itambé</a></li>
-              </ul>
-            </li>
             <li><button onClick={arquivoTemporario}>Testando</button></li>
-            {isLoggedIn ? [<li><Logout /></li>,<li><Perfil /></li>] : <li><Acesso /></li>}
+            {isLoggedIn ? 
+            <li className="dropdown">
+              <Perfil />
+              <ul>
+                <Carrinho />
+                <Logout />
+              </ul>
+            </li> : <li><Acesso /></li>}
           </ul>
           <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>

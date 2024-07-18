@@ -4,7 +4,9 @@ const Perfil: React.FC = () => {
 
     return (
       <div>
-        <a href="/carrinho">Perfil</a>
+        <a href="/perfil">Perfil
+          <i className="bi bi-chevron-down toggle-dropdown"></i>
+        </a>
       </div>
     );
   };

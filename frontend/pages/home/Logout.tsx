@@ -5,7 +5,7 @@ const Logout: React.FC = () => {
 
     return (
       <div>
-        <a href="/" onClick={() => Cookies.remove("authToken")}>Logout</a>
+        <li><a href="/" onClick={() => Cookies.remove("authToken")}>Sair</a></li>
       </div>
     );
   };
