@@ -6,7 +6,7 @@ import { UsuarioService } from 'src/usuario/usuario.service';
 import { AuthService } from 'src/auth/auth.service';
 import { JwtService } from '@nestjs/jwt';
 import { TokenError } from 'src/exceptions/token-error';
-import { ExceptionsHandler } from '@nestjs/core/exceptions/exceptions-handler';
+import Cookies from 'js-cookie'
 
 @Injectable()
 export class TokenService {
@@ -33,11 +33,11 @@ export class TokenService {
     if(buscarToken){
       let usuario = await this.usuarioService.findEmail(buscarToken.email)
       return this.authService.login(usuario)
-    }else{
+    }else
       return new HttpException({
         errorMessage: 'Token Inválido',
       }, HttpStatus.UNAUTHORIZED);
-    }
+    
   }
 
   async validarToken(token: string) {

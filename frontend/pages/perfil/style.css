@@ -1,3 +1,14 @@
+.container, .card, .list-group-item, .form-control, .btn, .col-md-3, .pt-0, a.list-group-item-action, a.list-group-item-action:hover, .col-md-9, .body, html {
+    background-color: black;
+    color: white;
+    border-color: white; 
+}
+
+a.list-group-item-action.active {
+    background-color: grey;
+    color: white;
+}
+
 
 .ui-w-80 {
     width : 80px !important;
@@ -20,7 +31,7 @@ label.btn {
     color       : #26B4FF;
 }
 
-.btn {
+.btn, .list-group-item, .list-group-item-action {
     cursor: pointer;
 }
 

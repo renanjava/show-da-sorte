@@ -30,7 +30,9 @@ const Perfil: React.FC = () => {
                     body: JSON.stringify({ token: token }),
                 });
                 const data = await response.json();
-                if (response.ok) {   
+                console.log("debug, data sub: " +data.sub)
+                if (response.ok && data.sub) {  
+                    console.log("entrou" +data) 
                     const responseGet = await fetch(`${URL_BACKEND}/usuario/${data.sub}`, {
                         method: 'GET',
                         headers: {
@@ -38,8 +40,7 @@ const Perfil: React.FC = () => {
                             'Content-Type': 'application/json',
                         }
                     });
-                    const dataGet = await responseGet.json()
-                    console.log("debug, dataGet: " +dataGet)
+                    const dataGet = await responseGet.json() 
                     setUserData(dataGet)
                 }
             }
@@ -61,14 +62,12 @@ const Perfil: React.FC = () => {
                                 <a 
                                     className={`list-group-item list-group-item-action ${activeTab === 'general' ? 'active' : ''}`} 
                                     onClick={() => handleTabClick('general')}
-                                    href="#"
                                 >
                                     Geral
                                 </a>
                                 <a 
                                     className={`list-group-item list-group-item-action ${activeTab === 'password' ? 'active' : ''}`} 
                                     onClick={() => handleTabClick('password')}
-                                    href="#"
                                 >
                                     Trocar Senha
                                 </a>

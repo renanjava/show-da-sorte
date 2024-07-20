@@ -14,8 +14,7 @@ export const useFormHandling = () => {
     email: '',
     name: '',
     phone: '',
-    password: '',
-    role: 'usuario'
+    password: ''
   });
 
   const [errors, setErrors] = useState<FormErrors>({})

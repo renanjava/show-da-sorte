@@ -20,10 +20,6 @@ export class CreateUsuarioDto{
     @MinLength(6, {message: "Senha deve ter no mínimo 6 caracteres"})
     password: string;
 
-    @IsNotEmpty({message: "Cargo é obrigatório"})
-    @IsEnum(["usuario", "admin", "dev"],{message: "Cargo deve ser válido"})
-    role: string;
-
     @IsNotEmpty({message: "Número de telefone é obrigatório"})
     @IsPhoneNumber(undefined, {message: "Número de telefone deve ser válido"})
     @IsUnique("phone", {message: "Telefone já está em uso"})
